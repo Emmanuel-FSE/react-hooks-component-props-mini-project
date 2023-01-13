@@ -1,16 +1,19 @@
-function Article ({post: {date = "January 1, 1970", minutes, preview, title}}){
+function Article ({date = "January 1, 1970", minutes, preview, title}){
     function readtime(){
-        if(minutes <=5){
-            return "☕️ 3 min read";
+
+        if(minutes<30){
+          let readingTime = minutes;
+          let emoji = "☕️";
+          let time_string = readingTime + " min read";
+          let num_emojis = Math.ceil(readingTime / 5);
+          return emoji.repeat(num_emojis) + " " + time_string
         }
-        else if(minutes <=10 && minutes>5){
-            return "☕️☕️ 10 min read";
-        }
-        else if(minutes <=15 && minutes>10){
-            return "☕️☕️☕️ 15 min read"
-        }
-        else if(minutes <=20 && minutes>15){
-            return "☕️☕️☕️☕️ 20 min read"
+        else if(minutes>30){
+            let readingTime = minutes;
+            let emoji = "🍱";
+            let time_string = readingTime + " min read";
+            let num_emojis = Math.ceil(readingTime / 10);
+            return emoji.repeat(num_emojis) + " " + time_string
         }
 
     }
